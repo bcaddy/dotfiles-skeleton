@@ -28,27 +28,41 @@ your own risk.
 
 
 ## Setup Instructions
-1. Make sure there is nothing in the original dotfiles that you want to keep.
+1. Fork this repo and change its name to "dotfiles"
+2.
+3. Make sure there is nothing in the original dotfiles that you want to keep.
    They will be backed up to `~/.old-dotfiles-backup` but better safe than sorry
-2. Check that ack, git, bash, and nano are all installed and of the appropriate
+4. Check that ack, git, bash, and nano are all installed and of the appropriate
    version
    - If you are on macOS make sure to install GNU coreutils and GNU's
-     implementation of `time` then add the following to your path and manpath in
-     your `bashrc_exports.sh` file before running `setup.sh`
+     implementation of `time` then run the following commands and make sure to
+     them to your hosts `bashrc_exports.sh` file before running `setup.sh`
      - PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
      - MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-3. Clone this repo, it must be in the home directory. If you want to put it
-   elsewhere you must change the setup script, the bashrc.sh file, and maybe others
-4. Create a directory for the new machine that is name like `<repo-root>/HOSTNAME`.
-   If the hostname is complex or there are multiple login nodes then you can
-   remap them to a more human readable name in `bashrc.sh`; see the example there for
-   the h2p cluster.
-5. Update `gitconfig` with your info and preferences
-6. Run `setup.sh` in `<repo-root>/bin`. This will add soft links to `bash_profile.sh`,
-   `bashrc.sh`, `nanorc`, and `gitconfig` and will backup the old versions of those files
-   to `~/.old-dotfiles-backup`
-7. (optional) Install iTerm2 Shell Integration by copying appropriate files from a machine
-   that has up to date versions of them or by following iTerm2's installation instructions
+5. Clone this repo, it must be in the home directory. If you want to put it
+   elsewhere you must change the setup script, the bashrc.sh file, and maybe
+   others. I strongly recommend putting it on your home directory because every
+   machine you use will have a home directory but might not have any additional
+   directory structure.
+6. Create a directory for the new machine that is named like
+   `<repo-root>/HOSTNAME`. If the hostname is complex or there are multiple
+   login nodes then you can remap them to a more human readable name in
+   `bashrc.sh`; see the example there for the h2p cluster. You can find a
+   working example for the H2P cluster at Pitt in the crc_h2p directory and you
+   can make your own host directory by copying the host directory template in
+   the `Templates` directory
+7. Update `gitconfig` with your info and preferences. Any lines that have an
+   equals sign with nothing on the right side of it either need to be edited
+   with your information or deleted.
+8. Run `setup.sh` in `<repo-root>/bin`. This will add soft links to
+   `bash_profile.sh`, `bashrc.sh`, `nanorc`, `.pythonrc`, `.inputrc`, and
+   `gitconfig` and will backup the old versions of those files to
+   `~/.old-dotfiles-backup`
+9. If you want to setup other dotfiles (`.vimrc` for example) then edit the list
+   of linked dotfiles in `setup.sh` accordingly
+10. (optional) Install iTerm2 Shell Integration by copying appropriate files
+    from a machine that has up to date versions of them or by following iTerm2's
+    installation instructions
 
 
 ## Setup instructions/notes for other things

@@ -9,25 +9,15 @@
 git_command=${1}
 
 #new we declare and assign an array with all paths to the repos in it
-if [[ "${HOSTNAME}" = "Capt-Janeway.local" ]] ; then
+if [[ "${HOSTNAME}" = "HOSTNAME 1" ]] ; then
   repo_path=(
-      '/Users/Bob/dotfiles'
-      '/Users/Bob/Desktop/PhD-Research/cholla-Makefile'
-      '/Users/Bob/Desktop/PhD-Research/cholla'
-      '/Users/Bob/Desktop/PhD-Research/Hydro-Sandbox'
-      '/Users/Bob/Documents/git-projects/bcaddy.github.io'
+      ''
+      ''
   )
-elif [[ "${HOSTNAME}" = "Capt-Picard.local" ]] ; then
+elif [[ "${HOSTNAME}" = "HOSTNAME 2" || "${HOSTNAME}" = "HOSTNAME 3" ]] ; then
   repo_path=(
-      '/Users/bob/dotfiles'
-  )
-elif [[ "${HOSTNAME}" = "login0.crc.pitt.edu" || "${HOSTNAME}" = "login1.crc.pitt.edu" ]] ; then
-  repo_path=(
-      '/ihome/eschneider/rvc9/dotfiles'
-      '/ihome/eschneider/rvc9/Learning-Cpp-CUDA'
-      '/ihome/eschneider/rvc9/cholla'
-      '/ihome/eschneider/rvc9/cholla-Makefile'
-      '/ihome/eschneider/rvc9/hydro-sandbox'
+      ''
+      ''
   )
 else
   echo "Host not found. Exiting"

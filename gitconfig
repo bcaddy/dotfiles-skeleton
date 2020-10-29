@@ -9,7 +9,7 @@
 	username =
 [github]
 	user =
-	token =
+	token = token
 [commit]
 	template = ~/dotfiles/git-message-template.txt
 [pull]
