@@ -1,9 +1,3 @@
-##### Check if dotfiles repo is up to date, run in background ##################
-  # this is run first so that it can run in the background while everything else
-  # is getting set up. 
-echo -n "dotfiles repo: "
-${HOME}/dotfiles/bin/Repo-check-updates.sh -p "${HOME}/dotfiles" &
-
 # Root of the dotfile repository
 repo_dir="$(dirname "$(realpath -P "${BASH_SOURCE[0]}")")"
 
@@ -45,5 +39,6 @@ for source_root in "$repo_dir" "$repo_dir/${host_dir}" ; do
   done
 done
 
-##### Make sure all processes are finished #####################################
-wait
+##### Check if dotfiles repo is up to date #####################################
+echo -n "dotfiles repo: "
+Repo-check-updates.sh -p "${HOME}/dotfiles"
