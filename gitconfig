@@ -14,18 +14,31 @@
 	template = ~/dotfiles/git-message-template.txt
 [pull]
     rebase = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [alias]
-	stick = log --oneline --decorate --graph --all -n 30 #my prefered version of git log
-	stat = status #short version of status
-	com = commit
+    # Simple aliases
+	stick = log --oneline --decorate --graph --all -n 30  # my prefered version of git log
+    longStick = log --oneline --decorate --graph --all    # my prefered version of git log with extra length
+	stat  = status                                        # short version of status
+	com   = commit                                        # short version of commit
+    ca    = commit -a                                     # add and commit at once
+    fix-commit = commit --edit --file=.git/COMMIT_EDITMSG
 
+    # More complex aliases
 	check = "!f() { \
 	Repo-check-updates.sh; \
 	}; f"
+
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"' #Show commits created by last command
+
 	edit = "!f() { \
 	/Users/Bob/Applications/Visual\\ Studio\\ Code.app/Contents/Resources/app/bin/code $(git status --short | awk '$1 ~ /^M|A|U/ {print $2}' ); \
 	}; f" #opens all unstaged files for editing in VS Code
+
 	hub = "!f() { \
 	if [[ "$OSTYPE" == "darwin"* ]]; then \
 		git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's,:,/,' -e 's,git@,http://,' | xargs open; \
@@ -34,4 +47,4 @@
 	fi; \
 	}; f"
 [include] #get gpg info
-	path = 
+	path = /path/to/local/config/file

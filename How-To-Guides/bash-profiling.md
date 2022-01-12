@@ -1,11 +1,12 @@
 # Bash script performance profiling
+
 If you're having issues with the performance of a bash script then here is a
 simple way to profile the performance of your script.
 
 If you have GNU date (or another version that can output nanoseconds), do this
 at the beginning of where you would like to start profiling in any bash script:
 
-```
+```bash
 PS4='+ $(date "+%s.%N")\011 '
 exec 3>&2 2>/tmp/bashstart.$$.log
 set -x
@@ -13,7 +14,7 @@ set -x
 
 and add
 
-```
+```bash
 set +x
 exec 2>&3 3>&-
 ```

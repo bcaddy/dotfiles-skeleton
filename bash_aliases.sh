@@ -13,7 +13,8 @@ alias rm='rm -iv'                        # ask before removing and be verbose
 alias ls='ls --color=auto'               # make ls colorful
 alias ldir='ls -d */ --color=auto'       # list all directories only
 alias la='ls -A --color=auto'            # -a shows hidden files and directories
-alias scp='scp -d'                       # -d requires that the directory exists
+alias scp='echo "You should use rsync"'  # 'nuf said
+alias grep='grep --color=auto'           # add colors to grep
 alias ack='ack --ignore-dir={_site,.git,.container,._site} --ignore-case --literal'  # Ignore some directories, make searches case-insensitive, ignore regex
 alias rsync='rsync -ah --info=progress2' # copy files with a progress bar
 alias rmt='mv --force -t ~/.Trash '      # move a file to the trash instead of rming it
@@ -41,6 +42,8 @@ alias cppPerf="g++ -std=c++17 -O3 "
   # gfortran Compile Aliases
 alias gfort_debug='gfortran -std=f2018 -Wextra -Wall -pedantic -fimplicit-none -fcheck=all -Og -g -fbacktrace '
 alias gfort_perf='gfortran -std=f2018 -fimplicit-none -O3 '
+alias caf_debug='caf -std=f2018 -Wextra -Wall -pedantic -fimplicit-none -fcheck=all -Og -g -fbacktrace '
+alias caf_perf='caf -std=f2018 -fimplicit-none -O3 '
 
   # Alias GNU time correctly
 if hash gtime 2>/dev/null; then

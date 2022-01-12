@@ -1,9 +1,8 @@
 # set options
 #switching between tabs and spaces is done with Meta-V for a single tab and Meta-O for multiple
-set constantshow #show line and column numbers at bottm
+set constantshow #show line and column numbers at bottom
 set linenumbers  #shoe line numbers on sidebar
 #set autoindent   #automatically indent #This causes issues with copy pasting large blocks of text
-set smooth       #scroll smoothly
 set tabsize 4    #sets the length of the tab to 4 spaces
 set tabstospaces #converts tabs to spaces
 #set mouse        #add mouse support - Disabled since it stops scrolling and doesn't let you hightlight to copy

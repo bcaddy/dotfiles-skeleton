@@ -6,9 +6,7 @@
 ##### Aliases ##################################################################
   # Misc. Aliases
 alias myq='crc-squeue.py --start'
-alias clean-cholla='rm *.h5 *.png *.err *.out'
 alias wrappers='imgcat ${HOME}/dotfiles/crc_h2p/bin/wrappers.png'
-alias gdb="${HOME}/dotfiles/crc_h2p/bin/gdb-run.sh"
 
   # Start interactive jobs
 alias gputest="(set -x; crc-interactive.py --gpu --partition=gtx1080 --time=1 --num-gpus=1)"

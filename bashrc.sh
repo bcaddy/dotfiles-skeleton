@@ -9,24 +9,22 @@ bash_sources=(
   bash_functions.sh
 )
 
-# Hostname directory map
-# This mapping is of the remote host's hostname to directory name
-# NOTE: If a host's hostname is not found in this list, the script will look for
-# a directory matching the host's name
-declare -A host_dirs
-    # Personal Machines
-    
-    # Remote Machines
-host_dirs["login0.crc.pitt.edu"]="crc_h2p"
-host_dirs["login1.crc.pitt.edu"]="crc_h2p"
+case $(hostname -f) in
+  login?.crc.pitt.edu)
+    host_dir="crc_h2p"
+    export DOTFILES_HOSTNAME="h2p"
+    ;;
+  ppc-n?.crc.pitt.edu)
+    host_dir="crc_h2p"
+    export DOTFILES_HOSTNAME="h2p_ppc"
+    ;;
+  *)
+    echo -n "Hostname not found in list of hosts for dotfiles"
+esac
+
 
 # Source bash files at the root of the dotfile repository and from host
 # repo_directories from the root of the dotfile repository (eg. ${repo}/host1/bashrc.sh)
-
-host_dir="${HOSTNAME}"
-if [[ "${!host_dirs[@]}" =~ $HOSTNAME ]] ; then
-  host_dir="${host_dirs["$HOSTNAME"]}"
-fi
 for source_root in "$repo_dir" "$repo_dir/${host_dir}" ; do
   for bash_file in "${bash_sources[@]}" ; do
     source_file="${source_root}/${bash_file}"
@@ -40,5 +38,7 @@ for source_root in "$repo_dir" "$repo_dir/${host_dir}" ; do
 done
 
 ##### Check if dotfiles repo is up to date #####################################
-echo -n "dotfiles repo: "
-Repo-check-updates.sh -p "${HOME}/dotfiles"
+if [[ $DOTFILES_HOSTNAME != "h2p_viz" ]]; then
+  echo -n "dotfiles repo: "
+  Repo-check-updates.sh -p "${HOME}/dotfiles"
+fi

@@ -20,16 +20,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from timeit import default_timer
 
-plt.close('all')
-start = default_timer()
+def main():
+    plt.close('all')
+    start = default_timer()
 
 
 
+    print(f'\nTime to execute: {round(default_timer()-start,2)} seconds')
 
 
-
-
-
-
-
-print(f'\nTime to execute: {round(default_timer()-start,2)} seconds')
+if __name__ == '__main__':
+    main()

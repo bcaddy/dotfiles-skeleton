@@ -3,11 +3,6 @@
 # hosts
 ################################################################################
 
-##### Colors  ##################################################################
-    # Tell grep to highlight matches
-export GREP_OPTIONS='--color=auto'
-
-
 ##### System and bash Settings  ################################################
     # Set command prompt to be "user@host shell path$ "
 export TERM="xterm-color"
@@ -15,6 +10,10 @@ PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\W\[\e[0m\]\$ '
 
     # Source iTerm2 Shell integration files
 source ~/.iterm2_shell_integration.bash
+
+    # check the window size after each command and, if necessary,
+    # update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
 
 ##### Exports ##################################################################

@@ -19,18 +19,38 @@ PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;35m\]h2p.\h\[\e[0m\]:\[\e[0;34m\]\W\[\e[0m\]
   # Make sure there are no unexpected modules loaded
 module purge
 
-  # General use modules
-module load cuda/10.1                   # Required to compile Cholla, must be loaded first
-module load gcc/8.2.0                   # Prereq for python, perl, and HDF5
+  # Check if we're on a header node or a POWER9/V100 node
+case "$DOTFILES_HOSTNAME" in
+  h2p)
+    # Load the standard modules for x86_64 nodes
+    # General use modules
+    module load gcc/8.2.0                   # Generally useful
+    module load python/anaconda3.8-2020.11  # Python
+    ;;
 
-  # Personal environment modules
-module load nano/4.6                    # Modern version of nano
-module load git/2.9.5                   # Modern version of git
-module load python/anaconda3.7-2019.03  # Python version I use. Requires GCC/8.2.0
+  h2p_ppc)
+    # Load the POWER9/V100 modules
+    # General use modules
+    module load python/anaconda3-2020.11  # Python version I use.
+    module load gcc/10.1.0                # Prereq for cuda/11.1.0
+    module load cuda/11.1.0               # Required to compile Cholla
 
-  # Cholla required modules
-module load openmpi/3.1.1               # MPI parallel compiler 
-module load hdf5/1.10.2                 # Required for Cholla datasets. Requires GCC 8.2.0
+    # Personal environment modules
+    module load nano/4.6                  # Modern version of nano
+
+    # Cholla required modules
+    module load openmpi/4.0.5             # MPI parallel compiler
+    module load hdf5/1.12.0               # Required for Cholla datasets.
+    module load googletest
+    ;;
+
+  *)
+    RED='\033[0;31m'
+    NC='\033[0m'  # No color
+    echo -e "${RED}Hostname is not in list of H2P hostnames. No modules loaded${NC} "
+    ;;
+esac
+
 
 ##### Exports ##################################################################
 export GPG_TTY=$(tty) #forces terminal usage instead of GUI among other things

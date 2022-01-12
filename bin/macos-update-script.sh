@@ -41,7 +41,6 @@ packages=(
    'make'
    'nano'
    'rsync'
-   'ruby'
    'sl'
    'tree'
 )

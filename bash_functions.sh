@@ -42,7 +42,7 @@ System time = %Ss
   make clean
 
   echo -e "\nCompiling..."
-  "${TIME}" -f "${format}" make > compile.log
+  "${TIME}" -f "${format}" make -j > compile.log
   it2attention start
   it2attention fireworks
 }
@@ -76,7 +76,7 @@ function find-and-replace() {
     find=$2
     replace=$3
 
-    grep -rl "${find}" $directory | xargs sed -i "s/${find}/${replace}/g"
+    grep -rl "${find}" $directory | xargs sed -i '' -e "s/${find}/${replace}/g"
 }
 # ==============================================================================
 

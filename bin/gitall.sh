@@ -9,20 +9,26 @@
 git_command=${1}
 
 #new we declare and assign an array with all paths to the repos in it
-if [[ "${HOSTNAME}" = "HOSTNAME 1" ]] ; then
-  repo_path=(
-      ''
-      ''
-  )
-elif [[ "${HOSTNAME}" = "HOSTNAME 2" || "${HOSTNAME}" = "HOSTNAME 3" ]] ; then
-  repo_path=(
-      ''
-      ''
-  )
-else
-  echo "Host not found. Exiting"
-  break
-fi
+case "$DOTFILES_HOSTNAME" in
+  *[hostname here]*)
+    repo_path=(
+        ''
+        ''
+    )
+    ;;
+
+  *[second host name here]*)
+    repo_path=(
+        ''
+        ''
+    )
+    ;;
+
+  *)
+    echo "Host not found. Exiting"
+    break
+esac
+
 
 #define some colors so that I can have some echo's show color
 NC='\033[0m' # No Color
